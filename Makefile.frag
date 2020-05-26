@@ -43,7 +43,8 @@ BP_DEMOS_C = \
   mc_work_share_sort_12 \
   mc_work_share_sort_16 \
   cache_hammer \
-  jalr_illegal
+  jalr_illegal \
+  satp_nofence
 
 BP_DEMOS_S = \
 	simple                \

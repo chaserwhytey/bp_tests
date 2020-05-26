@@ -7,7 +7,15 @@
 #include "bp_utils.h"
 
 void trap_success() {
-    bp_finish(0);
+    // Read mcause
+    uint64_t mcause;
+    __asm__ __volatile__ ("csrr %0, mcause" : "=r" (mcause));
+
+    // Check for illegal instruction
+    if (mcause == 2)
+      bp_finish(0);
+    else
+      bp_finish(1);
 }
 
 void main(uint64_t argc, char * argv[]) {
